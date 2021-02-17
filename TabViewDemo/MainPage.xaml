@@ -67,7 +67,7 @@
     </ContentPage.Resources>
 
     <Grid IsClippedToBounds="False" RowSpacing="0">
-        <toolkit:TabView Style="{StaticResource CustomTabStyle}">
+        <toolkit:TabView Style="{StaticResource CustomTabStyle}" x:Name="TabView">
             <!--  HOME TAB  -->
             <toolkit:TabViewItem>
                 <toolkit:TabViewItem.Icon>
@@ -83,9 +83,16 @@
                         Glyph="{x:Static utils:FontAwesomeIcons.Home}"
                         Color="{StaticResource PrimaryColor}" />
                 </toolkit:TabViewItem.IconSelected>
-                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                     <Label FontSize="Large" Text="Home" />
-                </Grid>
+                    <Label FontSize="Large" 
+                           Text="{Binding SelectedIndex,Source={x:Reference Name=TabView},StringFormat='Binding to selected index:{0}'}" />
+                    <StackLayout Margin="10">
+                        <Button Text="Favourites" Clicked="Button_OnClicked" StyleId="1"/>
+                        <Button Text="Fiance" Clicked="Button_OnClicked" StyleId="3"/>
+                        <Button Text="Profile" Clicked="Button_OnClicked" StyleId="4"/>
+                    </StackLayout>
+                </StackLayout>
             </toolkit:TabViewItem>
 
             <!--  FAVOURITE TAB  -->
@@ -103,9 +110,11 @@
                         Glyph="{x:Static utils:FontAwesomeIcons.Heart}"
                         Color="{StaticResource PrimaryColor}" />
                 </toolkit:TabViewItem.IconSelected>
-                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                     <Label FontSize="Large" Text="Favourites" />
-                </Grid>
+                    <Label FontSize="Large" 
+                           Text="{Binding SelectedIndex,Source={x:Reference Name=TabView},StringFormat='Binding to selected index:{0}'}" />
+                </StackLayout>
             </toolkit:TabViewItem>
 
             <!--  BASKET TAB  -->
@@ -136,9 +145,11 @@
                         Glyph="{x:Static utils:FontAwesomeIcons.Donate}"
                         Color="{StaticResource PrimaryColor}" />
                 </toolkit:TabViewItem.IconSelected>
-                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                     <Label FontSize="Large" Text="Finance" />
-                </Grid>
+                    <Label FontSize="Large" 
+                           Text="{Binding SelectedIndex,Source={x:Reference Name=TabView},StringFormat='Binding to selected index:{0}'}" />
+                </StackLayout>
             </toolkit:TabViewItem>
 
             <!--  PROFILE TAB  -->
@@ -156,9 +167,14 @@
                         Glyph="{x:Static utils:FontAwesomeIcons.User}"
                         Color="{StaticResource PrimaryColor}" />
                 </toolkit:TabViewItem.IconSelected>
-                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                     <Label FontSize="Large" Text="Profile" />
-                </Grid>
+                    <Label FontSize="Large" 
+                           Text="{Binding SelectedIndex,Source={x:Reference Name=TabView},StringFormat='Binding to selected index:{0}'}" />
+                    <StackLayout Margin="10">
+                        <Button Text="Home" Clicked="Button_OnClicked" StyleId="0"/>
+                    </StackLayout>
+                </StackLayout>
             </toolkit:TabViewItem>
         </toolkit:TabView>
     </Grid>
